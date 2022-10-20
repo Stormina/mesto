@@ -3,3 +3,7 @@
   border-radius: 10px;
   margin: 0 auto;
 }
+
+.elements__element:hover {
+  opacity: 0.6;
+}

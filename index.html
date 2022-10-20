@@ -20,11 +20,11 @@
       </div>
       <button class="profile__add-button"></button>
     </section>
-    <section class="elements">
+    <section class="elements" aria-label="Картинки самых красивых мест России">
       <div class="elements__element">
         <img class="elements__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
         <div class="elements__desc">
-          <h2 class="elements__title">Карачаевск-Черкесск</h2>
+          <h2 class="elements__title">Карачаевск</h2>
           <div class="elements__icon"></div>
         </div>
       </div>
@@ -68,5 +68,15 @@
 <footer class="footer">
   <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
 </footer>
+  <section class="popup">
+    <button class="popup__close"></button>
+    <form class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__input popup__input_name" type="text" value="Жак-Ив Кусто"></input>
+      <input class="popup__input popup__input_job" type="text" value="Исследователь океана"></input>
+      <button class="popup__submit" type="submit" value="">Сохранить</button>
+    </form>
+  </section>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
