@@ -1,5 +1,5 @@
 .profile {
-  width: 100%;
+  max-width: 880px;
   min-height: 120px;
   padding-top: 40px;
   margin: 0;
@@ -8,9 +8,8 @@
 
 @media screen and (max-width: 920px) {
   .profile {
-    width: 95%;
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 19px;
+    margin-left: 19px;
   }
 }
 
