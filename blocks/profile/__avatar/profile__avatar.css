@@ -2,9 +2,8 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-image: url(../../../images/Jacques-YvesCousteau.jpg);
   background-color: #C4C4C4;
-  background-size: cover;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 660px) {
