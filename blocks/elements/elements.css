@@ -1,14 +1,14 @@
 .elements {
   display: grid;
   grid-template-columns: repeat(3, 282px);
-  grid-template-rows: auto;
-  gap: 17px 20px;
-  padding-top: 51px;
+  grid-template-rows: repeat(2, 361px);
+  gap: 20px 17px;
+  padding-top: 46px;
 }
 
 @media screen and (max-width: 920px) {
   .elements {
-    grid-template-columns: repeat(2, 282px);
+    grid-template-columns: repeat(2, 272px);
     row-gap: 20px;
     justify-content: center;
   }
@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 660px) {
   .elements {
-    grid-template-columns: auto;
+    grid-template-columns: 282px;
     padding-top: 36px;
   }
 }

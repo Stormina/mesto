@@ -1,7 +1,6 @@
 .elements__desc {
-  background: #FFF;
+  width: 100%;
   border-radius: 0 0 10px 10px;
+  margin: 25px 15px 26px 21px;
   display: flex;
-  justify-content: space-between;
-  margin: 25px 15px 31px 21px;
 }
