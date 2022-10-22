@@ -7,10 +7,12 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  margin: 155px auto 8px calc(50% + 223px);
   border: 0;
   display: block;
   cursor: pointer;
+  position: absolute;
+  top: -40px;
+  right: -40px;
 }
 
 .popup__close:hover {
@@ -21,8 +23,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    margin-top: 123px;
-    margin-bottom: 16px;
-    margin-left: calc(50% + 121px);
+    top: -36px;
+    right: 0;
   }
 }

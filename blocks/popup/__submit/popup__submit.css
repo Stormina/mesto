@@ -1,9 +1,7 @@
 .popup__submit {
-  width: 358px;
-  height: 50px;
+  width: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  padding: 14px 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -25,8 +23,6 @@
 
 @media screen and (max-width: 660px) {
   .popup__submit {
-    width: 238px;
-    height: 46px;
     font-size: 14px;
     line-height: 17px;
   }
