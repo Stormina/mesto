@@ -4,13 +4,14 @@
   margin-top: 15px;
   border: 1px solid #FFF;
   padding: 0;
-  background-image: url(../../../images/editImage.png);
+  background-image: url(../../../images/editImage.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 10px 10px;
   background-color: #000;
   cursor: pointer;
-  
+  grid-column-start: 2;
+  grid-row-start: 1;
 }
 
 .profile__edit-button:hover {
@@ -22,5 +23,6 @@
     width: 18px;
     height: 18px;
     margin-top: 8px;
+    margin-left: -9px;
   }
 }
