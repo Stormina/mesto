@@ -1,3 +1,7 @@
+.elements__icon_active {
+  background-image: url(../../../../images/iconWhite.svg);
+}
+
 .elements__icon_active:active {
   background-image: url(../../../../images/iconBlack.svg);
 }
