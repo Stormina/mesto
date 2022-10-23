@@ -13,3 +13,7 @@
 .elements__icon:hover {
   opacity: 0.5;
 }
+
+.elements__icon:active {
+  background-image: url(../../../images/iconBlack.svg);
+}
