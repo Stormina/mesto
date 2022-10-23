@@ -1,5 +1,4 @@
 .profile__info {
-
   color: #FFF;
   margin: 22px 0 25px 30px;
   display: grid;
@@ -12,7 +11,7 @@
   .profile__info {
     width: 282px;
     margin: 26px 0 34px;
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 36px;
+    column-gap: 10px;
   }
 }
