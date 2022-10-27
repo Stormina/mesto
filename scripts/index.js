@@ -12,6 +12,8 @@ const profileElement = document.querySelector('.profile');
 let nameProfile = profileElement.querySelector('.profile__title');
 let jobProfile = profileElement.querySelector('.profile__subtitle');
 
+
+
 const openPopup = function() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
