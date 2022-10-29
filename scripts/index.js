@@ -5,6 +5,7 @@ const popupProfileCloseButton = popupProfile.querySelector('.popup__close_el_edi
 const popupElementCloseButton = popupProfile.querySelector('.popup__close_el_add');
 const containerEditElement = popupProfile.querySelector('.popup__container_el_edit');
 const containerAddElement = popupProfile.querySelector('.popup__container_el_add');
+const popupFormElement = popupProfile.querySelector('.popup__profile_form_element');
 
 const formElement = document.querySelector('.popup__container');
 const nameInput = formElement.querySelector('.popup__input_profile_name');
@@ -82,7 +83,33 @@ const initialCards = [
   }
 ];
 
+const templateElements = document.querySelector('.template');
+const container = document.querySelector('.elements');
 
+const getItemElement = (item) => {
+  const element = templateElements.content.cloneNode(true).children[0];
+  const textElement = element.querySelector('.elements__title');
+  const imageElement = element.querySelector('.elements__image');
+  textElement.textContent = item.name;
+  imageElement.src = item.link;
+  imageElement.alt = item.name;
+  return element;
+}
+
+const renderItem = (item) => {
+  const element = getItemElement(item);
+  container.prepend(element);
+}
+
+initialCards.forEach(renderItem);
+
+popupFormElement.addEventListener('sumbit', (evt) => {
+  evt.preventDefault();
+  
+  const item = cardInput.value;
+  const image = linkImgInput.value;
+  renderItem(item, image);
+})
 
 //Слушатели
 
