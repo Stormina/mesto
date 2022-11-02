@@ -1,0 +1,12 @@
+.popup__card {
+  width: 433px;
+  height: 540px;
+  position: relative;
+}
+
+@media screen and (max-width: 660px) {
+  .popup__card {
+    width: 240px;
+    height: 299px;
+  }
+}
