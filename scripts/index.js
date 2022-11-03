@@ -119,7 +119,7 @@ function turnLikeButton (event) {
 
 // Функции submit
 
-function formSubmitHandler (event) {
+function submitFormProfileHandler (event) {
   event.preventDefault();
   
   nameProfile.textContent = nameInput.value;
@@ -128,7 +128,7 @@ function formSubmitHandler (event) {
   closePopupProfile();
 }
 
-function formElementSubmitHandler (event) {
+function submitFormElementHandler (event) {
   event.preventDefault();
 
   const item = {name: cardInput.value, link: linkImgInput.value};
@@ -175,12 +175,12 @@ function setEventListener (element) {
 popupProfileOpenButton.addEventListener('click', openPopupEditProfile);
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
 popupProfile.addEventListener('click', closePopupOverlay);
-containerEditElement.addEventListener('submit', formSubmitHandler);
+containerEditElement.addEventListener('submit', submitFormProfileHandler);
 
 popupElementOpenButton.addEventListener('click', openPopupAddElement);
 popupElementCloseButton.addEventListener('click', closePopupElement);
 popupElement.addEventListener('click', closePopupOverlay);
-containerAddElement.addEventListener('submit', formElementSubmitHandler);
+containerAddElement.addEventListener('submit', submitFormElementHandler);
 
 popupImageCloseButton.addEventListener('click', closePopupImage);
 popupImage.addEventListener('click', closePopupOverlay);

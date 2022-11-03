@@ -1,6 +1,8 @@
 .popup__card {
   width: 433px;
   height: 540px;
+  display: flex;
+  align-self: center;
   position: relative;
 }
 
@@ -13,7 +15,7 @@
 
 @media screen and (orientation: landscape) {
   .popup__card {
-    width: 75vw;
-    height: 75vh;
+    width: max-content;
+    height: max-content;
   }
 }
