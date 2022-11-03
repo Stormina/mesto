@@ -1,5 +1,5 @@
 .elements__element {
-  background: #FFF;
+  background: #fff;
   border-radius: 10px;
   margin: 0 auto;
   display: flex;
@@ -9,4 +9,5 @@
 
 .elements__element:hover {
   outline: 1px solid aquamarine;
+  transition: outline .3s linear;
 }

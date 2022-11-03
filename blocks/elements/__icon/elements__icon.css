@@ -12,4 +12,5 @@
 
 .elements__icon:hover {
   opacity: 0.5;
+  transition: opacity .3s linear;
 }
