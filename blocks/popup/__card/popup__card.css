@@ -10,3 +10,10 @@
     height: 299px;
   }
 }
+
+@media (orientation: landscape) {
+  .popup__card {
+    width: 75vw;
+    height: 75vh;
+  }
+}
