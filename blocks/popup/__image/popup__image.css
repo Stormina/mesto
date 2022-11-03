@@ -1,5 +1,5 @@
 .popup__image {
-  max-width: 100%;
+  width: 100%;
   min-height: 540px;
   object-fit: cover;
   object-position: center;
@@ -11,7 +11,7 @@
   }
 }
 
-@media (orientation: landscape) {
+@media screen and (orientation: landscape) {
   .popup__image {
     width: 75vw;
     height: 75vh;

@@ -117,27 +117,6 @@ function turnLikeButton (event) {
   event.target.classList.toggle('elements__icon_active');
 }
 
-// Создание карточек
-
-function getItemElement (item) {
-  const element = templateElements.content.cloneNode(true).children[0];
-  const textElement = element.querySelector('.elements__title');
-  const imageElement = element.querySelector('.elements__image');
-  textElement.textContent = item.name;
-  imageElement.src = item.link;
-  imageElement.alt = item.name;
-
-  return element;
-}
-
-function renderItem (item) {
-  const element = getItemElement(item);
-  setEventListener(element);
-  container.prepend(element);
-}
-
-initialCards.forEach(renderItem);
-
 // Функции submit
 
 function formSubmitHandler (event) {
@@ -161,6 +140,27 @@ function formElementSubmitHandler (event) {
 
   closePopupElement();
 }
+
+// Создание карточек
+
+function getItemElement (item) {
+  const element = templateElements.content.cloneNode(true).children[0];
+  const textElement = element.querySelector('.elements__title');
+  const imageElement = element.querySelector('.elements__image');
+  textElement.textContent = item.name;
+  imageElement.src = item.link;
+  imageElement.alt = item.name;
+
+  return element;
+}
+
+function renderItem (item) {
+  const element = getItemElement(item);
+  setEventListener(element);
+  container.prepend(element);
+}
+
+initialCards.forEach(renderItem);
 
 //Вешаем слушатели
 
