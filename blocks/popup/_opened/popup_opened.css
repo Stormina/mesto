@@ -1,8 +1,5 @@
 .popup_opened {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   visibility: visible;
   opacity: 1;
-  transition: opacity .5s linear;
+  transition: visibility .4s linear, opacity .4s linear;
 }
