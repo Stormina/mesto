@@ -24,37 +24,8 @@ const elementContainerCardImage = popupImage.querySelector('.popup__image');
 const elementContainerCardCaption = popupImage.querySelector('.popup__caption');
 
 const container = document.querySelector('.elements');// Блок создания карточек
-const templateElements = container.querySelector('.template');
-const templateElementsImage = container.querySelector('.elements__image');
-
-// Карточки
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+const templateElements = document.querySelector('.template-element');
+const templateElementsImage = templateElements.querySelector('.element__image');
 
 // Открыть попап
 
@@ -108,13 +79,13 @@ function popupImageScreenSize (event) {
 // Кнопка удалить
 
 function deleteHandler (event) {
-  event.target.closest('.elements__element').remove();
+  event.target.closest('.element').remove();
 }
 
 // Активация лайка
 
 function turnLikeButton (event) {
-  event.target.classList.toggle('elements__icon_active');
+  event.target.classList.toggle('element__icon_active');
 }
 
 // Функции submit
@@ -145,8 +116,8 @@ function submitFormElementHandler (event) {
 
 function getItemElement (item) {
   const element = templateElements.content.cloneNode(true).children[0];
-  const textElement = element.querySelector('.elements__title');
-  const imageElement = element.querySelector('.elements__image');
+  const textElement = element.querySelector('.element__title');
+  const imageElement = element.querySelector('.element__image');
   textElement.textContent = item.name;
   imageElement.src = item.link;
   imageElement.alt = item.name;
@@ -165,9 +136,9 @@ initialCards.forEach(renderItem);
 //Вешаем слушатели
 
 function setEventListener (element) {
-  element.querySelector('.elements__trash').addEventListener('click', deleteHandler);
-  element.querySelector('.elements__icon').addEventListener('click', turnLikeButton);
-  element.querySelector('.elements__image').addEventListener('click', openPopupImage);
+  element.querySelector('.element__trash').addEventListener('click', deleteHandler);
+  element.querySelector('.element__icon').addEventListener('click', turnLikeButton);
+  element.querySelector('.element__image').addEventListener('click', openPopupImage);
 }
 
 //Слушатели

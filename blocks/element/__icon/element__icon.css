@@ -1,4 +1,4 @@
-.elements__icon {
+.element__icon {
   background-image: url(../../../images/iconWhite.svg);
   background-size: cover;
   background-color: #fff;
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.elements__icon:hover {
+.element__icon:hover {
   opacity: 0.5;
   transition: opacity .3s linear;
 }

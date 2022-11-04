@@ -1,4 +1,4 @@
-.elements__image {
+.element__image {
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -7,14 +7,14 @@
 }
 
 @media screen and (max-width: 920px) {
-  .elements__image {
+  .element__image {
     width: 272px;
     height: 272px;
   }
 }
 
 @media screen and (max-width: 660px) {
-  .elements__image {
+  .element__image {
     width: 282px;
     height: 282px;
   }
