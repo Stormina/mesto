@@ -3,6 +3,7 @@
   height: 540px;
   display: flex;
   align-self: center;
+  justify-content: center;
   position: relative;
 }
 

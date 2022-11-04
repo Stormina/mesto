@@ -41,7 +41,7 @@ function openPopupAddElement () {
 }
 
 function openPopupImage (event) {
-  popupImageScreenSize(event);
+  ZoomPopupImageScreenSize(event);
 
   popupImage.classList.add('popup_opened');
 }
@@ -70,7 +70,7 @@ function closePopupOverlay (event) {
 
 //Просмотр картинки
 
-function popupImageScreenSize (event) {
+function ZoomPopupImageScreenSize (event) {
   elementContainerCardImage.src = event.target.src;
   elementContainerCardImage.alt = event.target.alt;
   elementContainerCardCaption.textContent = event.target.alt;
@@ -90,7 +90,7 @@ function turnLikeButton (event) {
 
 // Функции submit
 
-function submitFormProfileHandler (event) {
+function handlerSubmitFormProfile (event) {
   event.preventDefault();
   
   nameProfile.textContent = nameInput.value;
@@ -99,7 +99,7 @@ function submitFormProfileHandler (event) {
   closePopupProfile();
 }
 
-function submitFormElementHandler (event) {
+function handlerSubmitFormElement (event) {
   event.preventDefault();
 
   const item = {name: cardInput.value, link: linkImgInput.value};
@@ -121,13 +121,13 @@ function getItemElement (item) {
   textElement.textContent = item.name;
   imageElement.src = item.link;
   imageElement.alt = item.name;
+  setEventListener(element);
 
   return element;
 }
 
 function renderItem (item) {
   const element = getItemElement(item);
-  setEventListener(element);
   container.prepend(element);
 }
 
@@ -146,12 +146,12 @@ function setEventListener (element) {
 popupProfileOpenButton.addEventListener('click', openPopupEditProfile);
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
 popupProfile.addEventListener('click', closePopupOverlay);
-containerEditElement.addEventListener('submit', submitFormProfileHandler);
+containerEditElement.addEventListener('submit', handlerSubmitFormProfile);
 
 popupElementOpenButton.addEventListener('click', openPopupAddElement);
 popupElementCloseButton.addEventListener('click', closePopupElement);
 popupElement.addEventListener('click', closePopupOverlay);
-containerAddElement.addEventListener('submit', submitFormElementHandler);
+containerAddElement.addEventListener('submit', handlerSubmitFormElement);
 
 popupImageCloseButton.addEventListener('click', closePopupImage);
 popupImage.addEventListener('click', closePopupOverlay);
