@@ -45,10 +45,10 @@ function editProfilePopupInputInfo () {
 }
 
   // Заполняет данные попапа целевой карточки
-function editCardPopupImageInfo (event) {
-  cardPopupImage.src = event.target.src;
-  cardPopupImage.alt = event.target.alt;
-  cardPopupImageCaption.textContent = event.target.alt;
+function editCardPopupImageInfo (element) {
+  cardPopupImage.src = element.target.src;
+  cardPopupImage.alt = element.target.alt;
+  cardPopupImageCaption.textContent = element.target.alt;
 }
 
 // Функция закрытия попапов
@@ -86,7 +86,7 @@ function handlerSubmitFormProfile (event) {
   profileTitleName.textContent = profileInputName.value;
   profileSubtitleJob.textContent = profileInputJob.value;
 
-  closePopupProfile();
+  closeModalWindow(profilePopupEdit);
 }
 
 function handlerSubmitFormElement (event) {
@@ -99,7 +99,7 @@ function handlerSubmitFormElement (event) {
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
 
-  closePopupElement();
+  closeModalWindow(elementPopupAdd);
 }
 
 // Создание карточек
@@ -128,8 +128,8 @@ initialCards.forEach(renderItem);
 function setEventListener (element) {
   element.querySelector('.element__trash').addEventListener('click', deleteHandler);
   element.querySelector('.element__icon').addEventListener('click', turnLikeButton);
-  element.querySelector('.element__image').addEventListener('click', (event) => {
-    editCardPopupImageInfo(event);
+  element.querySelector('.element__image').addEventListener('click', (element) => {
+    editCardPopupImageInfo(element);
     openModalWindow(cardPopupContainerImage);
   });
 }
