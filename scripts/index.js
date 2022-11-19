@@ -36,6 +36,7 @@ const cardPopupImageCaption = cardPopupContainerImage.querySelector('.popup__cap
 
 function openModalWindow (popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', closeModalWindowEsc);
 }
 
   // Заполняет инпуты попапа профиля при открытии
@@ -54,6 +55,7 @@ function editCardPopupImageInfo (element) {
 // Функция закрытия попапов
 
 function closeModalWindow (popupElement) {
+  document.removeEventListener('keydown', closeModalWindowEsc);
   popupElement.classList.remove('popup_opened');
 }
 
@@ -64,6 +66,13 @@ function closeModalWindowOverlay (event) {
   }
 
   closeModalWindow(event.target);
+}
+
+  // Функция закрытия попапов кнопкой Esc
+function closeModalWindowEsc (event) {
+  if ((event.key) === 'Escape' ) {
+  closeModalWindow();
+  }
 }
 
 // Кнопка удалить
