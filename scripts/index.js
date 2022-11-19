@@ -15,15 +15,15 @@ const cardTemplateElementImage = cardTemplateElement.querySelector('.element__im
 const profilePopupEdit = document.querySelector('.popup_type_profile');
 const profilePopupEditCloseButton = profilePopupEdit.querySelector('.popup__close_el_edit');
 const profilePopupEditContainer = profilePopupEdit.querySelector('.popup__container_el_edit');
-const profileInputName = profilePopupEdit.querySelector('.popup__input_profile_name');
-const profileInputJob = profilePopupEdit.querySelector('.popup__input_profile_job');
+const profileInputName = profilePopupEdit.querySelector('.form__input_profile_name');
+const profileInputJob = profilePopupEdit.querySelector('.form__input_profile_job');
 
   // Попап добавления карточки
 const elementPopupAdd = document.querySelector('.popup_type_element');
 const elementPopupAddCloseButton = elementPopupAdd.querySelector('.popup__close_el_add');
 const elementPopupAddContainer = elementPopupAdd.querySelector('.popup__container_el_add');
-const elementInputCard = elementPopupAdd.querySelector('.popup__input_profile_card');
-const elementInputLinkImage = elementPopupAdd.querySelector('.popup__input_profile_link-img');
+const elementInputCard = elementPopupAdd.querySelector('.form__input_profile_card');
+const elementInputLinkImage = elementPopupAdd.querySelector('.form__input_profile_link-img');
 const elementPopupAddOpenButton = profileElement.querySelector('.profile__add-button');
 
   // Попап просмотра картинки
