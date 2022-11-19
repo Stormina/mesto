@@ -40,10 +40,12 @@
     <div class="popup__container popup__container_el_edit">
       <button class="popup__close popup__close_el_edit" type="button" name="popupProfileCloseButton"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__profile" name="popupProfile">
-        <input class="popup__input popup__input_profile_name" name="nameInput" type="text" placeholder="Имя" value="Жак-Ив Кусто">
-        <input class="popup__input popup__input_profile_job" name="jobInput" type="text" placeholder="О себе" value="Исследователь океана">
-        <button class="popup__submit" type="submit" value="">Сохранить</button>
+      <form class="form" name="popupProfile" novalidate>
+        <input id="form__input" class="form__input form__input_profile_name" name="nameInput" type="text" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+        <span class="form__input-error"></span>
+        <input id="form__input" class="form__input form__input_profile_job" name="jobInput" type="text" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
+        <span class="form__input-error"></span>
+        <button class="form__submit" type="submit" value="">Сохранить</button>
       </form>
     </div>
   </div>
@@ -51,10 +53,12 @@
     <div class="popup__container popup__container_el_add">
       <button class="popup__close popup__close_el_add" type="button" name="popupElementCloseButton"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__profile" name="popupElement">
-        <input class="popup__input popup__input_profile_card" name="cardInput" type="text" placeholder="Название" value="">
-        <input class="popup__input popup__input_profile_link-img" name="linkImgInput" type="text/html" placeholder="Ссылка на картинку" value="">
-        <button class="popup__submit" type="submit" value="">Сохранить</button>
+      <form class="form" name="popupElement" novalidate>
+        <input id="form__input" class="form__input form__input_profile_card" name="cardInput" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
+        <span class="form__input-error"></span>
+        <input id="form__input" class="form__input form__input_profile_link-img" name="linkImgInput" type="url" placeholder="Ссылка на картинку" value="" required>
+        <span class="form__input-error"></span>
+        <button class="form__submit" type="submit" value="">Сохранить</button>
       </form>
     </div>
   </div>

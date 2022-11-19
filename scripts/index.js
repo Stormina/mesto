@@ -3,14 +3,14 @@
 const popupProfile = document.querySelector('.popup_type_profile');// Попап редактора профиля
 const popupProfileCloseButton = popupProfile.querySelector('.popup__close_el_edit');
 const containerEditElement = popupProfile.querySelector('.popup__container_el_edit');
-const nameInput = popupProfile.querySelector('.popup__input_profile_name');
-const jobInput = popupProfile.querySelector('.popup__input_profile_job');
+const nameInput = popupProfile.querySelector('.form__input_profile_name');
+const jobInput = popupProfile.querySelector('.form__input_profile_job');
 
 const popupElement = document.querySelector('.popup_type_element');// Попап добавления карточки
 const popupElementCloseButton = popupElement.querySelector('.popup__close_el_add');
 const containerAddElement = popupElement.querySelector('.popup__container_el_add');
-const cardInput = popupElement.querySelector('.popup__input_profile_card');
-const linkImgInput = popupElement.querySelector('.popup__input_profile_link-img');
+const cardInput = popupElement.querySelector('.form__input_profile_card');
+const linkImgInput = popupElement.querySelector('.form__input_profile_link-img');
 
 const profileElement = document.querySelector('.profile');// Блок редактора профиля
 const nameProfile = profileElement.querySelector('.profile__title');
@@ -184,3 +184,68 @@ containerAddElement.addEventListener('submit', formElementSubmitHandler);
 
 popupImageCloseButton.addEventListener('click', closePopupImage);
 popupImage.addEventListener('click', closePopupOverlay);
+
+
+
+
+
+
+const formElement = document.querySelector('.form');
+const formInput = formElement.querySelector('.form__input');
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('form__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('form__input-error_active');
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('form__input_type_error');
+  errorElement.classList.remove('form__input-error_active');
+  errorElement.textContent = '';
+};
+
+const isValid = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add('form__submit_inactive');
+  } else {
+    buttonElement.classList.remove('form__submit_inactive');
+  }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+  const buttonElement = formElement.querySelector('.form__submit');
+  toggleButtonState(inputList, buttonElement);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      isValid(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+    setEventListeners(formElement);
+  });
+};
+enableValidation();
