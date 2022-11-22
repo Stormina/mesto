@@ -31,11 +31,15 @@
       <button class="popup__close popup__close_el_edit" type="button" name="popupProfileCloseButton"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form" name="popupProfile" novalidate>
-        <input id="form__input" class="form__input form__input_profile_name" name="nameInput" type="text" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
-        <span class="form__input-error"></span>
-        <input id="form__input" class="form__input form__input_profile_job" name="jobInput" type="text" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
-        <span class="form__input-error"></span>
-        <button class="form__submit" type="submit" value="">Сохранить</button>
+        <section class="form__section">
+          <input id="form__input_type_name" class="form__input form__input_profile_name" name="nameInput" type="text" placeholder="Имя" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+          <span class="form__input-error"></span>
+        </section>
+        <section class="form__section">
+          <input id="form__input_type_job" class="form__input form__input_profile_job" name="jobInput" type="text" placeholder="О себе" value="Исследователь океана" minlength="2" maxlength="200" required>
+          <span class="form__input-error"></span>
+        </section>
+        <button class="form__submit" type="submit" value="" >Сохранить</button>
       </form>
     </div>
   </div>
@@ -44,11 +48,15 @@
       <button class="popup__close popup__close_el_add" type="button" name="popupElementCloseButton"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="form" name="popupElement" novalidate>
-        <input id="form__input" class="form__input form__input_profile_card" name="cardInput" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
-        <span class="form__input-error"></span>
-        <input id="form__input" class="form__input form__input_profile_link-img" name="linkImgInput" type="url" placeholder="Ссылка на картинку" value="" required>
-        <span class="form__input-error"></span>
-        <button class="form__submit" type="submit" value="">Сохранить</button>
+        <section class="form__section">
+          <input id="form__input_type_card" class="form__input form__input_profile_card" name="cardInput" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
+          <span class="form__input-error"></span>
+        </section>
+        <section class="form__section">
+          <input id="form__input_type_link" class="form__input form__input_profile_link-img" name="linkImgInput" type="url" placeholder="Ссылка на картинку" value="" required>
+          <span class="form__input-error"></span>
+        </section>
+        <button class="form__submit" type="submit" value="" >Сохранить</button>
       </form>
     </div>
   </div>
@@ -72,6 +80,7 @@
     </article>
   </template>
   <script src="./scripts/cards.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
