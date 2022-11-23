@@ -35,7 +35,6 @@ const cardPopupImageCaption = cardPopupContainerImage.querySelector('.popup__cap
 // Функции открытия попапов
 
 function openModalWindow (popupElement) {
-  setButtonStateInactive(popupElement, selectors);
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', closeModalWindowEsc);
 }
@@ -152,6 +151,8 @@ function setEventListener (element) {
   // Слушатели редактора профиля
 profilePopupEditOpenButton.addEventListener('click', () => {
   editProfilePopupInputInfo();
+  setButtonStateInactiveEditProfile(profilePopupEdit, selectors);
+  hideInputErrorEditProfile(profilePopupEdit, selectors);
   openModalWindow(profilePopupEdit);
 });
 profilePopupEditCloseButton.addEventListener('click', () => {

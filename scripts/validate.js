@@ -10,41 +10,59 @@ const checkInputValidity = (inputElement, selectors) => {
   }
 }
 
-// Показать текст при невалидности
+// Показать текст ошибки при невалидности
 const showInputError = (errorElement, inputElement, errorMessage, selectors) => {
   inputElement.classList.add(selectors.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(selectors.errorClass);
 }
 
-// Скрыть текст при невалидности
+// Скрыть текст ошибки при валидности
 const hideInputError = (errorElement, inputElement, selectors) => {
   inputElement.classList.remove(selectors.inputErrorClass);
   errorElement.classList.remove(selectors.errorClass);
   errorElement.textContent = '';
 }
 
+// Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
+const setButtonStateInactiveEditProfile = (profilePopupEdit, selectors) => {
+  const buttonElement = profilePopupEdit.querySelector(selectors.submitButtonSelector);
+  setButtonStateInactive(buttonElement, selectors);
+}
+
+// Скрыть текст ошибки валидности при открытии попапа редактирования профиля
+const hideInputErrorEditProfile = (profilePopupEdit, selectors) => {
+  const formSectionProfileList = Array.from(profilePopupEdit.querySelectorAll('.form__section'));
+  formSectionProfileList.forEach((formElement) => {
+    const inputError = formElement.querySelector('.form__input-error');
+    const inputProfile = formElement.querySelector('.form__input');
+    hideInputError(inputError, inputProfile, selectors);
+  });
+}
+
+// Определение состояния субмита
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 }
 
-
-// Определение состояния субмита
 const toggleButtonState = (inputList, buttonElement, selectors) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(selectors.inactiveButtonClass);
+    setButtonStateInactive(buttonElement, selectors);
   } else {
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(selectors.inactiveButtonClass);
+    setButtonStateActive(buttonElement, selectors);
   }
 }
 
-// Дефолтное состояние субмита при открытии попапа
-const setButtonStateInactive = (formElement, selectors) => {
-  const buttonElement = formElement.querySelector(selectors.submitButtonSelector)
+// Возвращаем субмиту активое состояние
+const setButtonStateActive = (buttonElement, selectors) => {
+  buttonElement.removeAttribute('disabled');
+  buttonElement.classList.remove(selectors.inactiveButtonClass);
+}
+
+// Отключаем кнопку субмита
+const setButtonStateInactive = (buttonElement, selectors) => {
   buttonElement.setAttribute('disabled', true);
   buttonElement.classList.add(selectors.inactiveButtonClass);
 }
