@@ -1,7 +1,7 @@
 // Функция валидации формы
 const checkInputValidity = (inputElement, selectors) => {
-  const formSection = inputElement.closest('.form__section');
-	const errorElement = formSection.querySelector('.form__input-error');
+  const formSection = inputElement.closest(selectors.sectionSelector);
+	const errorElement = formSection.querySelector(selectors.errorSelector);
 
   if (!inputElement.validity.valid) {
     showInputError(errorElement, inputElement, inputElement.validationMessage, selectors);
@@ -22,22 +22,6 @@ const hideInputError = (errorElement, inputElement, selectors) => {
   inputElement.classList.remove(selectors.inputErrorClass);
   errorElement.classList.remove(selectors.errorClass);
   errorElement.textContent = '';
-}
-
-// Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
-const setButtonStateInactiveEditProfile = (profilePopupEdit, selectors) => {
-  const buttonElement = profilePopupEdit.querySelector(selectors.submitButtonSelector);
-  setButtonStateInactive(buttonElement, selectors);
-}
-
-// Скрыть текст ошибки валидности при открытии попапа редактирования профиля
-const hideInputErrorEditProfile = (profilePopupEdit, selectors) => {
-  const formSectionProfileList = Array.from(profilePopupEdit.querySelectorAll('.form__section'));
-  formSectionProfileList.forEach((formElement) => {
-    const inputError = formElement.querySelector('.form__input-error');
-    const inputProfile = formElement.querySelector('.form__input');
-    hideInputError(inputError, inputProfile, selectors);
-  });
 }
 
 // Определение состояния субмита

@@ -71,10 +71,8 @@ function closeModalWindowOverlay (event) {
   // Функция закрытия попапов кнопкой Esc
 function closeModalWindowEsc (event) {
   if ((event.key) === 'Escape' ) {
-    const popupList = Array.from(document.querySelectorAll('.popup'));
-    popupList.forEach((popup) => {
-      closeModalWindow(popup);
-    });
+    const popupOpened = document.querySelector('.popup_opened');
+      closeModalWindow(popupOpened);
   }
 }
 
@@ -110,7 +108,8 @@ function handlerSubmitFormElement (event) {
   
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
-
+  
+  setButtonStateInactiveEditProfile(elementPopupAdd, selectors);
   closeModalWindow(elementPopupAdd);
 }
 
@@ -181,11 +180,29 @@ cardPopupContainerImage.addEventListener('click', closeModalWindowOverlay);
 
 const selectors = {
   formSelector: '.form',
+  sectionSelector: '.form__section',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
+  errorSelector: '.form__input-error',
   inactiveButtonClass: 'form__submit_inactive',
   inputErrorClass: 'form__input_type_error',
   errorClass: 'form__input-error_active'
 };
+
+// Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
+const setButtonStateInactiveEditProfile = (profilePopupEdit, selectors) => {
+  const buttonElement = profilePopupEdit.querySelector(selectors.submitButtonSelector);
+  setButtonStateInactive(buttonElement, selectors);
+}
+
+// Скрыть текст ошибки валидности при открытии попапа редактирования профиля
+const hideInputErrorEditProfile = (profilePopupEdit, selectors) => {
+  const formSectionProfileList = Array.from(profilePopupEdit.querySelectorAll(selectors.sectionSelector));
+  formSectionProfileList.forEach((formElement) => {
+    const inputError = formElement.querySelector(selectors.errorSelector);
+    const inputProfile = formElement.querySelector(selectors.inputSelector);
+    hideInputError(inputError, inputProfile, selectors);
+  });
+}
 
 enableValidation(selectors);
