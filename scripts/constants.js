@@ -1,5 +1,3 @@
-// Карточки
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -26,3 +24,19 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+const selectors = {
+  formSelector: '.form',
+  sectionSelector: '.form__section',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  errorSelector: '.form__input-error',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+};
+
+export {
+  initialCards,
+  selectors
+};
