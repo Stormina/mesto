@@ -1,22 +1,8 @@
 .popup__card {
-  width: 433px;
-  height: 540px;
+  max-width: 75vw;
+  max-height: 75vh;
   display: flex;
   align-self: center;
   justify-content: center;
   position: relative;
-}
-
-@media screen and (max-width: 660px) {
-  .popup__card {
-    width: 240px;
-    height: 299px;
-  }
-}
-
-@media screen and (orientation: landscape) {
-  .popup__card {
-    width: max-content;
-    height: max-content;
-  }
 }
