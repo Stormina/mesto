@@ -58,6 +58,9 @@ const cardPopupImage = cardPopupContainerImage.querySelector('.popup__image');
 const cardPopupImageCaption = cardPopupContainerImage.querySelector('.popup__caption');
 const cardPopupImageCloseButton = cardPopupContainerImage.querySelector('.popup__close_el_image');
 
+// Блок создания карточек
+const cardTemplateContainer = document.querySelector('.elements');
+
 // Попап добавления карточки
 const elementPopupAdd = document.querySelector('.popup_type_element');
 const elementPopupForm = elementPopupAdd.querySelector('.form_type_element');
@@ -85,5 +88,6 @@ export {
   elementPopupForm,
   elementPopupAddCloseButton,
   elementInputCard,
-  elementInputLinkImage
+  elementInputLinkImage,
+  cardTemplateContainer
 };

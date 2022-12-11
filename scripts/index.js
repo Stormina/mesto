@@ -20,7 +20,8 @@ import {
   elementPopupForm,
   elementPopupAddCloseButton,
   elementInputCard,
-  elementInputLinkImage
+  elementInputLinkImage,
+  cardTemplateContainer
 } from "./constants.js";
 
 /* // Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
@@ -98,13 +99,12 @@ function handleSubmitFormProfile (event) {
 function handleSubmitFormElement (event) {
   event.preventDefault();
 
-  const card = new Card(elementInputCard.value, elementInputLinkImage.value);
-  card.renderItem(elementInputCard.value, elementInputLinkImage.value);
+  renderItem({name: elementInputCard.value, link: elementInputLinkImage.value});
   
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
   
-  setButtonStateInactiveEditProfile(elementPopupAdd, selectors);
+  /* setButtonStateInactiveEditProfile(elementPopupAdd, selectors); */
   closeModalWindow(elementPopupAdd);
 }
 
@@ -144,8 +144,13 @@ const formEditValidator = new FormValidator(profilePopupForm, selectors);
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
 
-// Генерация всех карточек из массива
-initialCards.forEach((item) => {
+// Создание разметки карточки
+function renderItem (item) {
   const card = new Card(item.name, item.link);
-  card.renderItem(item.name, item.link);
-});
+  const cardElement = card.generateCard();
+
+  cardTemplateContainer.prepend(cardElement);
+}
+
+// Генерация всех карточек из массива
+initialCards.forEach(renderItem);

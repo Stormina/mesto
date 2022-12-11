@@ -1,10 +1,10 @@
 import { openModalWindowImage } from "./index.js"
 
 export default class Card {
-  constructor(title, image) {
+  constructor(title, image, _getTemplate) {
       this._title = title;
       this._image = image;
-      this._openModalWindowImage = openModalWindowImage;
+      this.openModalWindowImage = openModalWindowImage;
   }
 
   // Клонируем блок карточки
@@ -19,8 +19,8 @@ export default class Card {
   }
 
   // Лайк
-  _turnLikeButton(elementIcon) {
-    elementIcon.classList.toggle('element__icon_active');
+  _turnLikeButton() {
+    this._elementIcon.classList.toggle('element__icon_active');
   }
 
   // Удалить карточку
@@ -30,31 +30,26 @@ export default class Card {
   }
 
   // Вешаем слушатели
-  _setEventListeners(elementIcon, elementTrash, elementImage) {
-    elementIcon.addEventListener('click', () => {this._turnLikeButton(elementIcon)});
-    elementTrash.addEventListener('click', () => {this._deleteHandler(this._element)});
-    elementImage.addEventListener('click', () => {this._openModalWindowImage(elementImage)});
+  _setEventListeners() {
+    this._elementIcon.addEventListener('click', () => this._turnLikeButton());
+    this._elementTrash.addEventListener('click', () => this._deleteHandler());
+    this._elementImage.addEventListener('click', () => this.openModalWindowImage(this._elementImage));
   }
 
   // Генерация карточки
-  _generateCard() {
+  generateCard() {
     this._element = this._getTemplate();
+
+    this._elementIcon = this._element.querySelector('.element__icon');
+    this._elementTrash = this._element.querySelector('.element__trash');
+    this._elementImage = this._element.querySelector('.element__image');
     
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._title;
+    this._elementImage.src = this._image;
+    this._elementImage.alt = this._title;
     this._element.querySelector('.element__title').textContent = this._title;
     
-    const elementIcon = this._element.querySelector('.element__icon');
-    const elementTrash = this._element.querySelector('.element__trash');
-    const elementImage = this._element.querySelector('.element__image');
-    this._setEventListeners(elementIcon, elementTrash, elementImage);
+    this._setEventListeners();
 
     return this._element;
-  }
-
-  // Вывод карточки на страницу
-  renderItem() {
-    const cardElement = this._generateCard();
-    document.querySelector('.elements').prepend(cardElement);
   }
 }
