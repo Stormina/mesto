@@ -5,7 +5,7 @@ import {
   selectors,
   profilePopupEdit,
   profilePopupEditCloseButton,
-  profilePopupEditContainer,
+  profilePopupForm,
   profileInputName,
   profileInputJob,
   profileTitleName,
@@ -17,13 +17,13 @@ import {
   cardPopupImageCaption,
   cardPopupImageCloseButton,
   elementPopupAdd,
-  elementPopupAddContainer,
+  elementPopupForm,
   elementPopupAddCloseButton,
   elementInputCard,
   elementInputLinkImage
 } from "./constants.js";
 
-// Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
+/* // Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
 const setButtonStateInactiveEditProfile = (formElement, selectors) => {
   const buttonElement = formElement.querySelector(selectors.submitButtonSelector);
   formEditValidator.setButtonStateInactive(buttonElement);
@@ -37,7 +37,7 @@ const hideInputErrorEditProfile = (profilePopupEdit, selectors) => {
     const inputProfile = formElement.querySelector(selectors.inputSelector);
     formEditValidator.hideInputError(inputError, inputProfile);
   });
-}
+} */
 
 // Функции открытия попапов
 
@@ -85,7 +85,7 @@ function closeModalWindowEsc (event) {
 }
 
 // Функция submit редактора профиля
-function handlerSubmitFormProfile (event) {
+function handleSubmitFormProfile (event) {
   event.preventDefault();
   
   profileTitleName.textContent = profileInputName.value;
@@ -95,7 +95,7 @@ function handlerSubmitFormProfile (event) {
 }
 
 // Функция submit создания новой карточки
-function handlerSubmitFormElement (event) {
+function handleSubmitFormElement (event) {
   event.preventDefault();
 
   const card = new Card(elementInputCard.value, elementInputLinkImage.value);
@@ -111,15 +111,15 @@ function handlerSubmitFormElement (event) {
 // Слушатели редактора профиля
 profilePopupEditOpenButton.addEventListener('click', () => {
   editProfilePopupInputInfo();
-  setButtonStateInactiveEditProfile(profilePopupEdit, selectors);
-  hideInputErrorEditProfile(profilePopupEdit, selectors);
+  /* setButtonStateInactiveEditProfile(profilePopupEdit, selectors);
+  hideInputErrorEditProfile(profilePopupEdit, selectors); */
   openModalWindow(profilePopupEdit);
 });
 profilePopupEditCloseButton.addEventListener('click', () => {
   closeModalWindow(profilePopupEdit);
 });
 profilePopupEdit.addEventListener('mousedown', closeModalWindowOverlay);
-profilePopupEditContainer.addEventListener('submit', handlerSubmitFormProfile);
+profilePopupForm.addEventListener('submit', handleSubmitFormProfile);
 
 // Слушатели создания новых карточек
 elementPopupAddOpenButton.addEventListener('click', () => {
@@ -129,7 +129,7 @@ elementPopupAddCloseButton.addEventListener('click', () => {
   closeModalWindow(elementPopupAdd);
 }); 
 elementPopupAdd.addEventListener('mousedown', closeModalWindowOverlay);
-elementPopupAddContainer.addEventListener('submit', handlerSubmitFormElement);
+elementPopupForm.addEventListener('submit', handleSubmitFormElement);
 
 // Слушатели режима просмотра картинок
 cardPopupImageCloseButton.addEventListener('click', () => {
@@ -138,8 +138,8 @@ cardPopupImageCloseButton.addEventListener('click', () => {
 cardPopupContainerImage.addEventListener('mousedown', closeModalWindowOverlay);
 
 // Валидация форм
-const formAddValidator = new FormValidator(elementPopupAddContainer, selectors);
-const formEditValidator = new FormValidator(profilePopupEditContainer, selectors);
+const formAddValidator = new FormValidator(elementPopupForm, selectors);
+const formEditValidator = new FormValidator(profilePopupForm, selectors);
 
 formAddValidator.enableValidation();
 formEditValidator.enableValidation();
