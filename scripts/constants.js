@@ -47,7 +47,6 @@ const profilePopupEditOpenButton = profileElement.querySelector('.profile__edit-
 
 // Попап редактора профиля
 const profilePopupEdit = document.querySelector('.popup_type_profile');
-const profilePopupEditCloseButton = profilePopupEdit.querySelector('.popup__close_el_edit');
 const profilePopupForm = profilePopupEdit.querySelector('.form_type_profile');
 const profileInputName = profilePopupEdit.querySelector('.form__input_profile_name');
 const profileInputJob = profilePopupEdit.querySelector('.form__input_profile_job');
@@ -56,7 +55,6 @@ const profileInputJob = profilePopupEdit.querySelector('.form__input_profile_job
 const cardPopupContainerImage = document.querySelector('.popup_type_image');
 const cardPopupImage = cardPopupContainerImage.querySelector('.popup__image');
 const cardPopupImageCaption = cardPopupContainerImage.querySelector('.popup__caption');
-const cardPopupImageCloseButton = cardPopupContainerImage.querySelector('.popup__close_el_image');
 
 // Блок создания карточек
 const cardTemplateContainer = document.querySelector('.elements');
@@ -64,7 +62,6 @@ const cardTemplateContainer = document.querySelector('.elements');
 // Попап добавления карточки
 const elementPopupAdd = document.querySelector('.popup_type_element');
 const elementPopupForm = elementPopupAdd.querySelector('.form_type_element');
-const elementPopupAddCloseButton = elementPopupAdd.querySelector('.popup__close_el_add');
 const elementInputCard = elementPopupAdd.querySelector('.form__input_profile_card');
 const elementInputLinkImage = elementPopupAdd.querySelector('.form__input_profile_link-img');
 
@@ -72,7 +69,6 @@ export {
   initialCards,
   selectors,
   profilePopupEdit,
-  profilePopupEditCloseButton,
   profilePopupForm,
   profileInputName,
   profileInputJob,
@@ -83,10 +79,8 @@ export {
   cardPopupContainerImage,
   cardPopupImage,
   cardPopupImageCaption,
-  cardPopupImageCloseButton,
   elementPopupAdd,
   elementPopupForm,
-  elementPopupAddCloseButton,
   elementInputCard,
   elementInputLinkImage,
   cardTemplateContainer

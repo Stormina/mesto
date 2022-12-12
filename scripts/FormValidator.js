@@ -1,6 +1,5 @@
 export default class FormValidator {
   constructor(formElement, selectors) {
-    this._formSelector = selectors.formSelector;
     this._sectionSelector = selectors.sectionSelector;
     this._inputSelector = selectors.inputSelector;
     this._submitButtonSelector = selectors.submitButtonSelector;
@@ -19,10 +18,19 @@ export default class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(errorElement, inputElement, inputElement.validationMessage);
     } else {
-      this.hideInputError(errorElement, inputElement);
+      this._hideInputError(errorElement, inputElement);
     }
   }
-  
+
+  // Скрыть текст ошибки валидности при открытии попапа редактирования профиля
+  hideInputErrorEditProfile = () => {
+    this._inputList.forEach((inputElement) => {
+      const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+      this._hideInputError(errorElement, inputElement);
+      this._setButtonStateInactive();
+    });
+  }
+
   // Показать текст ошибки при невалидности
   _showInputError = (errorElement, inputElement, errorMessage) => {
     inputElement.classList.add(this._inputErrorClass);
@@ -31,57 +39,54 @@ export default class FormValidator {
   }
 
   // Скрыть текст ошибки при валидности
-  hideInputError = (errorElement, inputElement) => {
+  _hideInputError = (errorElement, inputElement) => {
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
   }
 
   // Определение состояния субмита
-  _hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput = () => {
+    return this._inputList.some((inputElement) => {
     return !inputElement.validity.valid;
     });
   }
 
-  _toggleButtonState = (inputList, buttonElement) => {
-    if (this._hasInvalidInput(inputList)) {
-      this.setButtonStateInactive(buttonElement);
+  _toggleButtonState = () => {
+    if (this._hasInvalidInput()) {
+      this._setButtonStateInactive();
     } else {
-      this._setButtonStateActive(buttonElement);
+      this._setButtonStateActive();
     }
   }
 
   // Возвращаем субмиту активое состояние
-  _setButtonStateActive = (buttonElement) => {
-    buttonElement.removeAttribute('disabled');
-    buttonElement.classList.remove(this._inactiveButtonClass);
+  _setButtonStateActive = () => {
+    this._buttonElement.removeAttribute('disabled');
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
   }
 
   // Отключаем кнопку субмита
-  setButtonStateInactive = (buttonElement) => {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(this._inactiveButtonClass);
+  _setButtonStateInactive = () => {
+    this._buttonElement.setAttribute('disabled', true);
+    this._buttonElement.classList.add(this._inactiveButtonClass);
   }
 
   // Слушатель инпутов
   _setEventListeners = () => {
-    const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-    const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    this._toggleButtonState(inputList, buttonElement);
-    inputList.forEach((inputElement) => {
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
   }
 
-  // Вешаем слушатель на каждую форму
+  // Вешаем слушатель форму
   enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
-    formList.forEach((formElement) => {
-      this._setEventListeners(formElement);
-    });
+    this._setEventListeners();
   }
 }

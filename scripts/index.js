@@ -4,7 +4,6 @@ import {
   initialCards,
   selectors,
   profilePopupEdit,
-  profilePopupEditCloseButton,
   profilePopupForm,
   profileInputName,
   profileInputJob,
@@ -15,37 +14,42 @@ import {
   cardPopupContainerImage,
   cardPopupImage,
   cardPopupImageCaption,
-  cardPopupImageCloseButton,
   elementPopupAdd,
   elementPopupForm,
-  elementPopupAddCloseButton,
   elementInputCard,
   elementInputLinkImage,
   cardTemplateContainer
 } from "./constants.js";
 
-/* // Сделать кнопку субмита неактивной при открытии попапа редактирования профиля
-const setButtonStateInactiveEditProfile = (formElement, selectors) => {
-  const buttonElement = formElement.querySelector(selectors.submitButtonSelector);
-  formEditValidator.setButtonStateInactive(buttonElement);
-} 
-
-// Скрыть текст ошибки валидности при открытии попапа редактирования профиля
-const hideInputErrorEditProfile = (profilePopupEdit, selectors) => {
-  const formSectionProfileList = Array.from(profilePopupEdit.querySelectorAll(selectors.sectionSelector));
-  formSectionProfileList.forEach((formElement) => {
-    const inputError = formElement.querySelector(selectors.errorSelector);
-    const inputProfile = formElement.querySelector(selectors.inputSelector);
-    formEditValidator.hideInputError(inputError, inputProfile);
-  });
-} */
-
-// Функции открытия попапов
-
+// Функция открытия модального окна
 function openModalWindow (popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', closeModalWindowEsc);
 }
+
+// Функция закрытия модального окна
+function closeModalWindow (popupElement) {
+  popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeModalWindowEsc);
+}
+
+// Функция закрытия модального окна кнопкой Esc
+function closeModalWindowEsc (event) {
+  if ((event.key) === 'Escape' ) {
+    const popupOpened = document.querySelector('.popup_opened');
+      closeModalWindow(popupOpened);
+  }
+}
+
+// Функция закрытия попапов
+document.querySelectorAll('.popup').forEach((popup) => {
+  popup.addEventListener('mousedown', (event) => { 
+    if ((event.target) === event.currentTarget || 
+    event.target.classList.contains('popup__close')) { 
+      closeModalWindow (popup); 
+    }; 
+  }); 
+}); 
 
 // Заполняет инпуты попапа профиля при открытии
 function editProfilePopupInputInfo () {
@@ -60,30 +64,6 @@ export function openModalWindowImage (element) {
   cardPopupImageCaption.textContent = element.alt;
   openModalWindow(cardPopupContainerImage);
 } 
-
-// Функция закрытия попапов
-
-function closeModalWindow (popupElement) {
-  popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeModalWindowEsc);
-}
-
-// Функция закрытия попапов кликом в пустое пространство
-function closeModalWindowOverlay (event) {
-  if (event.target !== event.currentTarget) {
-    return;
-  }
-
-  closeModalWindow(event.target);
-}
-
-// Функция закрытия попапов кнопкой Esc
-function closeModalWindowEsc (event) {
-  if ((event.key) === 'Escape' ) {
-    const popupOpened = document.querySelector('.popup_opened');
-      closeModalWindow(popupOpened);
-  }
-}
 
 // Функция submit редактора профиля
 function handleSubmitFormProfile (event) {
@@ -104,38 +84,23 @@ function handleSubmitFormElement (event) {
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
   
-  /* setButtonStateInactiveEditProfile(elementPopupAdd, selectors); */
+  formAddValidator.hideInputErrorEditProfile(elementPopupAdd);
   closeModalWindow(elementPopupAdd);
 }
 
 // Слушатели редактора профиля
 profilePopupEditOpenButton.addEventListener('click', () => {
   editProfilePopupInputInfo();
-  /* setButtonStateInactiveEditProfile(profilePopupEdit, selectors);
-  hideInputErrorEditProfile(profilePopupEdit, selectors); */
+  formEditValidator.hideInputErrorEditProfile(profilePopupEdit);
   openModalWindow(profilePopupEdit);
 });
-profilePopupEditCloseButton.addEventListener('click', () => {
-  closeModalWindow(profilePopupEdit);
-});
-profilePopupEdit.addEventListener('mousedown', closeModalWindowOverlay);
 profilePopupForm.addEventListener('submit', handleSubmitFormProfile);
 
 // Слушатели создания новых карточек
 elementPopupAddOpenButton.addEventListener('click', () => {
   openModalWindow(elementPopupAdd);
 });
-elementPopupAddCloseButton.addEventListener('click', () => {
-  closeModalWindow(elementPopupAdd);
-}); 
-elementPopupAdd.addEventListener('mousedown', closeModalWindowOverlay);
 elementPopupForm.addEventListener('submit', handleSubmitFormElement);
-
-// Слушатели режима просмотра картинок
-cardPopupImageCloseButton.addEventListener('click', () => {
-  closeModalWindow(cardPopupContainerImage);
-});
-cardPopupContainerImage.addEventListener('mousedown', closeModalWindowOverlay);
 
 // Валидация форм
 const formAddValidator = new FormValidator(elementPopupForm, selectors);
