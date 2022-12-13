@@ -84,7 +84,7 @@ function handleSubmitFormElement (event) {
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
   
-  formAddValidator.hideInputErrorEditProfile(elementPopupAdd);
+  formAddValidator.setButtonStateInactive(elementPopupAdd);
   closeModalWindow(elementPopupAdd);
 }
 
@@ -111,7 +111,7 @@ formEditValidator.enableValidation();
 
 // Создание разметки карточки
 function renderItem (item) {
-  const card = new Card(item.name, item.link);
+  const card = new Card(item.name, item.link, '.template-element_type_default');
   const cardElement = card.generateCard();
 
   cardTemplateContainer.prepend(cardElement);
