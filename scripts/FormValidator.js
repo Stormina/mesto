@@ -16,8 +16,8 @@ export default class FormValidator {
     }
   }
 
-  // Скрыть текст ошибки валидности при открытии попапа редактирования профиля
-  hideInputErrorEditProfile = () => {
+  // Скрыть текст ошибки валидности при открытии попапа 
+  hideInputErrorPopupForms = () => {
     const sectionList = Array.from(this._formElement.querySelectorAll(this._selectors.sectionSelector));
     sectionList.forEach((sectionElement) => {
       const errorElement = sectionElement.querySelector(this._selectors.errorSelector);

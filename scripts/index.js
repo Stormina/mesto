@@ -84,14 +84,14 @@ function handleSubmitFormElement (event) {
   elementInputCard.value = "";
   elementInputLinkImage.value = "";
   
-  formAddValidator.setButtonStateInactive(elementPopupAdd);
+  formAddValidator.setButtonStateInactive();
   closeModalWindow(elementPopupAdd);
 }
 
 // Слушатели редактора профиля
 profilePopupEditOpenButton.addEventListener('click', () => {
   editProfilePopupInputInfo();
-  formEditValidator.hideInputErrorEditProfile(profilePopupEdit);
+  formEditValidator.hideInputErrorPopupForms();
   openModalWindow(profilePopupEdit);
 });
 profilePopupForm.addEventListener('submit', handleSubmitFormProfile);
