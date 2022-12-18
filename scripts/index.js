@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import Section from "../src/components/Section.js";
 import { 
   initialCards,
   selectors,
@@ -112,10 +113,14 @@ formEditValidator.enableValidation();
 // Создание разметки карточки
 function renderItem (item) {
   const card = new Card(item.name, item.link, '.template-element_type_default');
-  const cardElement = card.generateCard();
-
-  cardTemplateContainer.prepend(cardElement);
+  return card.generateCard();
 }
 
+const cardList = new Section ({
+  items: initialCards, 
+  renderer: renderItem
+  }, cardTemplateContainer
+);
+
 // Генерация всех карточек из массива
-initialCards.forEach(renderItem);
+cardList.renderItems();
