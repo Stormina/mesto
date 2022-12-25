@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./src/pages/index.css">
   <title>Место</title>
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта">
+    <img class="header__logo" src="./src/images/logo.svg" alt="Логотип сайта">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/Jacques-YvesCousteau.jpg" alt="Жак-Иф Кусто">
+      <img class="profile__avatar" src="./src/images/Jacques-YvesCousteau.jpg" alt="Жак-Иф Кусто">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -49,11 +49,11 @@
       <h2 class="popup__title">Новое место</h2>
       <form class="form form_type_element" name="popupElement" novalidate>
         <div class="form__section">
-          <input id="form__input_type_card" class="form__input form__input_profile_card" name="cardInput" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
+          <input id="form__input_type_card" class="form__input form__input_profile_card" name="name" type="text" placeholder="Название" value="" minlength="2" maxlength="30" required>
           <span class="form__input-error"></span>
         </div>
         <div class="form__section">
-          <input id="form__input_type_link" class="form__input form__input_profile_link-img" name="linkImgInput" type="url" placeholder="Ссылка на картинку" value="" required>
+          <input id="form__input_type_link" class="form__input form__input_profile_link-img" name="link" type="url" placeholder="Ссылка на картинку" value="" required>
           <span class="form__input-error"></span>
         </div>
         <button class="form__submit" type="submit" value="" >Сохранить</button>
@@ -79,6 +79,6 @@
       <button class="element__trash" type="button" name="deleteButton"></button>
     </article>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./src/pages/index.js"></script>
 </body>
 </html>

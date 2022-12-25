@@ -1,11 +1,9 @@
-import { openModalWindowImage } from "./index.js"
-
 export default class Card {
-  constructor(title, image, templateSelector) {
+  constructor(title, image, templateSelector, handleCardClick) {
       this._title = title;
       this._image = image;
       this._templateSelector = templateSelector;
-      this.openModalWindowImage = openModalWindowImage;
+      this._handleCardClick = handleCardClick;
   }
 
   // Клонируем блок карточки
@@ -34,7 +32,7 @@ export default class Card {
   _setEventListeners() {
     this._elementIcon.addEventListener('click', () => this._turnLikeButton());
     this._elementTrash.addEventListener('click', () => this._deleteHandler());
-    this._elementImage.addEventListener('click', () => this.openModalWindowImage({alt: this._title, src: this._image}));
+    this._elementImage.addEventListener('click', () => this._handleCardClick(this._title, this._image));
   }
 
   // Генерация карточки

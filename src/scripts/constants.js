@@ -53,8 +53,6 @@ const profileInputJob = profilePopupEdit.querySelector('.form__input_profile_job
 
 // Попап просмотра картинки
 const cardPopupContainerImage = document.querySelector('.popup_type_image');
-const cardPopupImage = cardPopupContainerImage.querySelector('.popup__image');
-const cardPopupImageCaption = cardPopupContainerImage.querySelector('.popup__caption');
 
 // Блок создания карточек
 const cardTemplateContainer = document.querySelector('.elements');
@@ -62,8 +60,6 @@ const cardTemplateContainer = document.querySelector('.elements');
 // Попап добавления карточки
 const elementPopupAdd = document.querySelector('.popup_type_element');
 const elementPopupForm = elementPopupAdd.querySelector('.form_type_element');
-const elementInputCard = elementPopupAdd.querySelector('.form__input_profile_card');
-const elementInputLinkImage = elementPopupAdd.querySelector('.form__input_profile_link-img');
 
 export {
   initialCards,
@@ -77,11 +73,7 @@ export {
   profileSubtitleJob,
   profilePopupEditOpenButton,
   cardPopupContainerImage,
-  cardPopupImage,
-  cardPopupImageCaption,
   elementPopupAdd,
   elementPopupForm,
-  elementInputCard,
-  elementInputLinkImage,
   cardTemplateContainer
 };
