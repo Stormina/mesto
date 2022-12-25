@@ -18,6 +18,9 @@ module.exports = {
 
     open: true
   },
+  performance: {
+    hints: false,
+  },
   module: {
     rules: [
       {

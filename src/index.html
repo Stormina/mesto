@@ -7,11 +7,11 @@
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип сайта">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/Jacques-YvesCousteau.jpg" alt="Жак-Иф Кусто">
+      <img class="profile__avatar" src="<%=require('./images/Jacques-YvesCousteau.jpg')%>" alt="Жак-Иф Кусто">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -78,6 +78,5 @@
       <button class="element__trash" type="button" name="deleteButton"></button>
     </article>
   </template>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
