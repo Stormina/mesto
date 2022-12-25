@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rd /s /q dist && webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stormina/mesto.git"
+  },
+  "keywords": [],
+  "author": "Maxim Sychev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stormina/mesto/issues"
+  },
+  "homepage": "https://github.com/Stormina/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
