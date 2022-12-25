@@ -20,6 +20,7 @@ import {
   elementPopupForm,
   cardTemplateContainer
 } from "../scripts/constants.js";
+import './index.css';
 
 // Функция открытия режима просмотра картинки
 function handleCardClick(title, image) {
