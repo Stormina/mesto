@@ -18,7 +18,8 @@ import {
   cardPopupContainerImage,
   elementPopupAdd,
   elementPopupForm,
-  cardTemplateContainer
+  cardTemplateContainer,
+  templateCardDefault
 } from "../scripts/constants.js";
 import './index.css';
 
@@ -80,7 +81,7 @@ profilePopupEditSelector.setEventListeners();
 
 // Создание разметки карточки
 function renderItem (item) {
-  const card = new Card(item.name, item.link, '.template-element_type_default', handleCardClick);
+  const card = new Card(item.name, item.link, templateCardDefault, handleCardClick);
   return card.generateCard();
 }
 

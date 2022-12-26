@@ -46,20 +46,21 @@ const profileSubtitleJob = profileElement.querySelector('.profile__subtitle');
 const profilePopupEditOpenButton = profileElement.querySelector('.profile__edit-button');
 
 // Попап редактора профиля
-const profilePopupEdit = document.querySelector('.popup_type_profile');
-const profilePopupForm = profilePopupEdit.querySelector('.form_type_profile');
-const profileInputName = profilePopupEdit.querySelector('.form__input_profile_name');
-const profileInputJob = profilePopupEdit.querySelector('.form__input_profile_job');
+const profilePopupEdit = '.popup_type_profile';
+const profilePopupForm = document.querySelector('.form_type_profile');
+const profileInputName = document.querySelector('.form__input_profile_name');
+const profileInputJob = document.querySelector('.form__input_profile_job');
 
 // Попап просмотра картинки
-const cardPopupContainerImage = document.querySelector('.popup_type_image');
+const cardPopupContainerImage = '.popup_type_image';
 
 // Блок создания карточек
 const cardTemplateContainer = document.querySelector('.elements');
 
 // Попап добавления карточки
-const elementPopupAdd = document.querySelector('.popup_type_element');
-const elementPopupForm = elementPopupAdd.querySelector('.form_type_element');
+const elementPopupAdd = '.popup_type_element';
+const elementPopupForm = document.querySelector('.form_type_element');
+const templateCardDefault = '.template-element_type_default';
 
 export {
   initialCards,
@@ -75,5 +76,6 @@ export {
   cardPopupContainerImage,
   elementPopupAdd,
   elementPopupForm,
-  cardTemplateContainer
+  cardTemplateContainer,
+  templateCardDefault
 };
