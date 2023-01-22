@@ -1,6 +1,8 @@
 .element__desc {
   width: 100%;
   border-radius: 0 0 10px 10px;
-  margin: 25px 15px 26px 21px;
-  display: flex;
+  margin: 22px 20px 20px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
 }

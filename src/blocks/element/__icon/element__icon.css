@@ -4,13 +4,15 @@
   background-color: #fff;
   width: 22px;
   height: 19px;
-  margin: 5px 5px 0 auto;
+  display: block;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   cursor: pointer;
 }
 
 .element__icon:hover {
-  opacity: 0.5;
-  transition: opacity .3s linear;
+  background-image: url(../../../images/iconBlack.svg);
+  /* opacity: 0.5;
+  transition: opacity .3s linear; */
 }

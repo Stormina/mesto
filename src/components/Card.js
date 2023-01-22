@@ -1,10 +1,19 @@
 export default class Card {
-  constructor(title, image, templateSelector, handleCardClick) {
+  constructor(
+    title,
+    image,
+    templateSelector,
+    handleCardClick,
+    handleCardDelete,
+    handleCardLike
+    ) {
       this._title = title;
       this._image = image;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
-  }
+      this._handleCardDelete = handleCardDelete;
+      this._handleCardLike = handleCardLike;
+    }
 
   // Клонируем блок карточки
   _getTemplate() {
@@ -23,7 +32,7 @@ export default class Card {
   }
 
   // Удалить карточку
-  _deleteHandler() {
+  deleteHandler() {
     this._element.remove();
     this._element = null;
   }
@@ -31,7 +40,7 @@ export default class Card {
   // Вешаем слушатели
   _setEventListeners() {
     this._elementIcon.addEventListener('click', () => this._turnLikeButton());
-    this._elementTrash.addEventListener('click', () => this._deleteHandler());
+    this._elementTrash.addEventListener('click', () => this.handleCardDelete());
     this._elementImage.addEventListener('click', () => this._handleCardClick(this._title, this._image));
   }
 

@@ -11,7 +11,9 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/Jacques-YvesCousteau.jpg')%>" alt="Жак-Иф Кусто">
+      <div class="profile__block-avatar">
+        <img class="profile__avatar" src="<%=require('./images/Jacques-YvesCousteau.jpg')%>" alt="Жак-Иф Кусто">
+      </div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -55,7 +57,7 @@
           <input id="form__input_type_link" class="form__input form__input_profile_link-img" name="link" type="url" placeholder="Ссылка на картинку" value="" required>
           <span class="form__input-error"></span>
         </div>
-        <button class="form__submit" type="submit" value="" >Сохранить</button>
+        <button class="form__submit" type="submit" value="" >Создать</button>
       </form>
     </div>
   </div>
@@ -68,12 +70,37 @@
       </figure>
     </div>
   </div>
+  <div class="popup popup_type_avatar">
+    <div class="popup__container popup__container_el_avatar">
+      <button class="popup__close popup__close_el_avatar" type="button" name="popupAvatarCloseButton"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="form form_type_avatar" name="popupAvatar" novalidate>
+        <div class="form__section">
+          <input id="form__input_type_avatar" class="form__input form__input_profile_avatar" name="link" type="url" placeholder="Ссылка на картинку" value="" required>
+          <span class="form__input-error"></span>
+        </div>
+        <button class="form__submit" type="submit" value="" >Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_trash">
+    <div class="popup__container popup__container_el_trash">
+      <button class="popup__close popup__close_el_trash" type="button" name="popupTrashCloseButton"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="form form_type_trash" name="popupTrash" novalidate>
+        <button class="form__submit" type="submit" value="" >Да</button>
+      </form>
+    </div>
+  </div>
   <template class="template-element template-element_type_default">
     <article class="element">
       <img class="element__image" src="#" alt="">
       <div class="element__desc">
         <h2 class="element__title"></h2>
+        <figure class="element__figure">
         <button class="element__icon" type="button" name="like"></button>
+        <figcaption class="element__icon-caption" color="black">6</figcaption>
+      </figure>
       </div>
       <button class="element__trash" type="button" name="deleteButton"></button>
     </article>

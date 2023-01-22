@@ -1,0 +1,20 @@
+.profile__block-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 660px) {
+  .profile__block-avatar {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.profile__block-avatar:hover {
+  background-image: url(../../../images/iconEditHover.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px 26px;
+  cursor: pointer;
+}
