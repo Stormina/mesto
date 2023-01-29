@@ -1,4 +1,4 @@
-// Карточки
+/* // Карточки
 const initialCards = [
   {
     name: 'Архыз',
@@ -24,7 +24,7 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-];
+]; */
 
 // Селекторы валидации
 const selectors = {
@@ -45,6 +45,7 @@ const elementPopupAddOpenButton = profileElement.querySelector('.profile__add-bu
 const profileSubtitleJob = profileElement.querySelector('.profile__subtitle');
 const profilePopupEditOpenButton = profileElement.querySelector('.profile__edit-button');
 const avatarPopupOpenButton = profileElement.querySelector('.profile__block-avatar');
+const profileAvatar = profileElement.querySelector('.profile__avatar');
 
 // Попап редактора профиля
 const profilePopupEdit = '.popup_type_profile';
@@ -54,6 +55,7 @@ const profileInputJob = document.querySelector('.form__input_profile_job');
 
 // Попап редактора аватара
 const avatarPopupEdit = '.popup_type_avatar';
+const avatarFormEdit = document.querySelector('.form_type_avatar');
 
 // Попап просмотра картинки
 const cardPopupContainerImage = '.popup_type_image';
@@ -69,8 +71,10 @@ const templateCardDefault = '.template-element_type_default';
 // Попап удаления карточки
 const elementPopupCardDelete = '.popup_type_trash';
 
+// Кнопка отправить формы удаления карты
+const submitDeleteFormButton = document.querySelector(elementPopupCardDelete).querySelector('.form__submit'); 
+
 export {
-  initialCards,
   selectors,
   profilePopupEdit,
   profilePopupForm,
@@ -87,5 +91,8 @@ export {
   templateCardDefault,
   avatarPopupEdit,
   avatarPopupOpenButton,
-  elementPopupCardDelete
+  elementPopupCardDelete,
+  avatarFormEdit,
+  profileAvatar,
+  submitDeleteFormButton
 };
